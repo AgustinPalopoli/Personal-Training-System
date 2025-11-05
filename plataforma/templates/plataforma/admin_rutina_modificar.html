@@ -1,0 +1,68 @@
+{% extends "plataforma/base_admin.html" %}
+{% block title %}
+Ej. Modificar
+{% endblock %}
+{% load static %}
+{% block body %}
+<form action="{% url 'admin_rutina_modificar' rutinas.0.rutina.id %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h1>Modificar rutinas</h1>
+    <div>
+        <p>Nombre: <input class="btn btn-light" name="nombre_rutina" placeholder="Nombre" type="text" value={{ rutinas.0.rutina.nombre_rutina }} >
+        <p>Tipo: <select class="btn btn-light"  name="tipo_usuario">
+            {% if rutinas.0.rutina.tipo_usuario == "Premiun" %}
+                <option selected>Premiun</option>
+                <option>Gratis</option>
+            {% else %}
+                <option>Premiun</option>
+                <option selected>Gratis</option>
+            {% endif %}
+        </select><p>
+        <p>Sexo: <select class="btn btn-light"  name="tipo_sexo">
+        {% if rutinas.0.rutina.tipo_sexo == "Hombre" %}
+            <option selected>Hombre</option>
+            <option>Mujer</option>
+        {% else %}
+            <option>Hombre</option>
+            <option selected>Mujer</option>
+        {% endif %}
+        </select><p>
+        <div id="ejercicios">
+            {% for rutina in rutinas %}
+            Ejercicio<select style="width:100%" class="btn btn-light" name="todos_ejercicios">
+                <option value={{ rutina.ej.id }} selected>{{ rutina.ej.tipo }} - {{ rutina.ej.nombre_ej }}</option>
+                {% for ejercicio in ejercicios %}
+                    {% if rutina.ej.id != ejercicio.id %}
+                    <option value={{ ejercicio.id }}>{{ ejercicio.tipo }} - {{ ejercicio.nombre_ej }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+            {% endfor %}
+            <div id="primer_ejercicio" style="display:none">
+                Ejercicio<select style="width:100%" class="btn btn-light" name="todos_ejercicios">
+                    {% for ejercicio in ejercicios %}
+                        <option value={{ ejercicio.id }}>{{ ejercicio.tipo }} - {{ ejercicio.nombre_ej }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+    </div>
+    <a class="botonesA btn btn-secondary" href="{% url 'admin_rutina' %}">Volver</a>
+    <button class="btn btn-success" style="margin-top:10px" type="submit">Guardar</button>
+</form>
+<button class="botonesA btn btn-warning" id="boton_agregar">Agregar ejercicio</button>
+<script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('#boton_agregar').addEventListener('click', () => agregar_input());
+    });
+    
+    function agregar_input() {
+        var primer_ejercicio = document.getElementById('primer_ejercicio');
+        var container = document.getElementById('ejercicios');
+        var input_html = primer_ejercicio.innerHTML
+        container.innerHTML += input_html
+    }
+    
+</script>
+{% endblock %}

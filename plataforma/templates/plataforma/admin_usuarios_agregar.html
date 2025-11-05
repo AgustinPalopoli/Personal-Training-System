@@ -1,0 +1,26 @@
+{% extends "plataforma/base_admin.html" %}
+{% block title %}
+Usuario Agregar
+{% endblock %}
+
+{% block body %}
+<form action="{% url 'admin_usuarios_agregar' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h1>Agregar usuario</h1>
+    <div >
+       <p>Nombre: <input class="btn btn-light" autofocus type="text" name="username" placeholder="Nombre de usuario"></p>
+       <p>Email: <input class="btn btn-light" type="email" name="email" placeholder="Email"></p>
+       <p>Tipo: <select class="btn btn-light" name="rol">
+            <option value="2">Normal</option>
+            <option value="3">Premiun</option>
+        </select></p>
+        <p>Sexo: <select class="btn btn-light" name="sexo">
+            <option>Hombre</option>
+            <option>Mujer</option>
+        </select></p>
+        <p>Contraseña: <input class="btn btn-light" type="text" name="password" placeholder="Contraseña"></p>
+    </div>
+    <button class="botonesA btn btn-success" type="submit">Guardar</button>
+    <a class="botonesA btn btn-secondary" href="{% url 'admin_usuarios' %}">Volver</a>
+</form>
+{% endblock %}

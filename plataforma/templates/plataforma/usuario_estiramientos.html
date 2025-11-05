@@ -1,0 +1,36 @@
+{% extends "plataforma/base_usuario.html" %}
+{% block title %}
+Rutina
+{% endblock %}
+
+{% block body %}
+<h1>Estiramientos</h1>
+<table class="table table-bordered table-dark">
+    <colgroup>
+        <col span="1" style="width: 25%;">
+        <col span="1" style="width: 75%;">
+      </colgroup>
+    <tbody>
+        {% regroup estiramiento by grupo_muscular as estiramiento_og %}
+        {% for estiramiento in estiramiento_og %}
+            <tr class="table-light">
+                <td colspan="2"><b>{{ estiramiento.grouper }}</b></td>
+            </tr>
+            {% for ex in estiramiento.list %}
+                <tr>
+                    <td class="table-dark">{{ ex.nombre_ej }}</td>
+                    <td style="text-align: center;" id="imagen{{ ex.id }}"><button style="width:12rem" onclick="mostrar_imagen('{{ ex.id }}','{{ ex.imagen }}')" type="button" class="btn btn-secondary"><strong>Ver imagen</strong></button></td>
+                </tr>
+            {% endfor %}
+        {% endfor %}
+    </tbody>
+  </table>
+<script type="text/javascript">
+  function mostrar_imagen(id,url) {
+      var cambiar = document.getElementById(`imagen${parseInt(id,10)}`)
+      var dir = "static/plataforma/imagenes/" + url 
+      dir = `<img class="img_est" src="${dir}" >`
+      cambiar.innerHTML = dir
+  };
+</script>
+{% endblock %}

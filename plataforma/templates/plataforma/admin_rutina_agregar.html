@@ -1,0 +1,65 @@
+{% extends "plataforma/base_admin.html" %}
+{% block title %}
+Ej. Agregar
+{% endblock %}
+{% load static %}
+{% block body %}
+<form action="{% url 'admin_rutina_agregar' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div>
+        <h1>Agregar rutina</h1>
+        <p>Nombre: <input class="btn btn-light" autofocus name="nombre_rutina" placeholder="Nombre" type="text"></p>
+        <p>Tipo: <select class="btn btn-light" name="tipo_usuario">
+            <option>Premiun</option>
+            <option>Gratis</option>
+        </select></p>
+        <p>Sexo: <select class="btn btn-light" name="tipo_sexo">
+            <option>Hombre</option>
+            <option>Mujer</option>
+        </select></p>
+        <div id="ejercicios" >
+            <div id="primer_ejercicio">
+                Ejercicio: <select style="width:100%" class="btn btn-light"  name="todos_ejercicios">
+                    {% for ejercicio in ejercicios %}
+                        <option value={{ ejercicio.id }}>{{ ejercicio.tipo }} - {{ ejercicio.nombre_ej }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+    </div>
+    <button class="botonesA btn btn-success" type="submit">Guardar</button>
+    <a class="botonesA btn btn-secondary" href="{% url 'admin_rutina' %}">Volver</a>
+</form>
+<button class="botonesA btn btn-warning" id="boton_agregar">Agregar ejercicio</button>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('#boton_agregar').addEventListener('click', () => agregar_input());
+    });
+    
+    function agregar_input() {
+        var contador = document.getElementById('contador');
+        var primer_ejercicio = document.getElementById('primer_ejercicio');
+        var container = document.getElementById('ejercicios');
+        var input_html = document.createElement("input")
+        input_html = primer_ejercicio.innerHTML;
+        container.innerHTML += input_html;
+    }
+
+    function ocultar(id){
+        var contador = document.getElementById('contador');
+        var opcion = document.getElementById(id);
+        var x;
+        contador = parseInt(contador.value, 10) + 1;
+        for (let i = 0; i < contador; i++) {
+            if (i != id) {
+                x = document.getElementById(i);
+                x.remove(opcion.selectedIndex);
+            }
+        }
+    }
+</script>
+{% endblock %}

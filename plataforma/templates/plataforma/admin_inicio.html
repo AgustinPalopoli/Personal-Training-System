@@ -1,0 +1,29 @@
+{% extends "plataforma/base_admin.html" %}
+{% block title %}
+Inicio
+{% endblock %}
+
+{% block body %}
+<form action="{% url 'admin_inicio' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h1>Inicio</h1>
+    <div id="contenido" class="table-responsive">
+        <table class="table table-dark table-hover table-striped mb-0">
+            <tr>
+                <th></th>
+                <th>Usuario</th>
+                <th>Modificar rutinas</th>
+            </tr>
+            {% for tiza in pizarron %}
+            <tr>
+                <td><input style="margin:0px;position:relative" class="form-check-input" type="checkbox" name="eliminar" value="{{ tiza.id }}" ></td>
+                <td>{{ tiza.usuario }}</td>
+                <td><a href="{% url 'admin_pizarron_modificar' tiza.id %}">Modificar</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <button class="botonesA btn btn-danger" type="submit">Eliminar</button>
+    <a class="botonesA btn btn-primary" href="{% url 'admin_pizarron_agregar' %}">Agregar</a>
+    </form>
+{% endblock %}

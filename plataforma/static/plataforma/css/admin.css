@@ -1,0 +1,55 @@
+.container_ventana{
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.712);
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    opacity: 0;  
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    padding:2vh;
+    text-align: center;
+    pointer-events: none;
+}
+
+.ventana{
+    background-color: #ff0000;
+    color:white;
+    max-width: 100%;
+    padding: 2vw;
+    border-radius: 20px;
+    box-shadow: 0 1000px 1000px rgba(0, 0, 0, 0.2);
+}
+.fondo{
+    padding: 2vmax;
+}
+.bloque{
+    background-color: #212529;
+    color: aliceblue;
+    padding:2vw;
+    border-radius: 10px;
+    height: 100%;
+}
+.form-check-input{
+    position: none;
+}
+.botonesA{
+    margin-top: 15px;
+    margin-bottom: 2px;
+    margin-right: 7px;
+}
+.botonesR{
+    width:1000px;
+}
+a{
+    color: rgb(255, 255, 255);
+}
+a:hover{
+    color: rgb(252, 117, 20);
+}
+img{
+    width: 100px;
+    height: 100px;
+}

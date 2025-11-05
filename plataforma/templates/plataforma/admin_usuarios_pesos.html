@@ -1,0 +1,19 @@
+{% extends "plataforma/base_admin.html" %}
+{% block title %}
+Usuario Pesos
+{% endblock %}
+
+{% block body %}
+<form action="{% url 'admin_usuarios_pesos' usuario.id %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div>
+        <h1>Usuario: {{ usuario.username }}</h1>
+        {% for ex in usuario.pesos.all %}
+            <p>{{ ex.ejercicio.nombre_ej }}: <input class="botonAEx btn btn-light" autocomplete="off" autofocus name="cantidad_peso" value="{{ ex.cantidad_peso }}" type="text"></p>
+
+        {% endfor %}
+    </div>
+    <button class="botonesA btn btn-success" type="submit">Guardar</button>
+    <a class="botonesA btn btn-secondary" href="{% url 'admin_usuarios' %}">Volver</a>
+</form>
+{% endblock %}

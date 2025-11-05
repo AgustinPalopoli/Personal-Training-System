@@ -1,0 +1,29 @@
+{% extends "plataforma/base_admin.html" %}
+{% block title %}
+Pizarron Agregar
+{% endblock %}
+
+{% block body %}
+<form action="{% url 'admin_pizarron_modificar' pizarron.id %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div>
+        <h1>Modificar las rutinas a usuarios</h1>
+        <p>Usuario: {{ pizarron.usuario }}</p>
+        <p>Mensaje:  <input class="btn btn-light" autocomplete="off" autofocus name="mensaje" value="{{ pizarron.mensaje }}" type="text"></p>
+        {% for rutina_piza in pizarron_rutinas %} 
+        <p>
+        Rutinas {{ forloop.counter }}: <select style="width:100%" class="btn btn-light" name="rutinas_semana">
+                <option value={{ rutina_piza.pizarron_rutina.id }}>{{ rutina_piza.pizarron_rutina.nombre_rutina }}</option>
+                {% for rutina in rutinas %}
+                    {% if rutina.id != rutina_piza.pizarron_rutina.id  %}
+                    <option value={{ rutina.id }}>{{ rutina.nombre_rutina }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </p>
+        {% endfor %}
+    </div>
+    <button class="botonesA btn btn-success" type="submit">Guardar</button>
+    <a class="botonesA btn btn-secondary" href="{% url 'admin_inicio' %}">Volver</a>
+</form>
+{% endblock %}

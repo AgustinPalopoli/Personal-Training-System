@@ -1,0 +1,303 @@
+body{
+    background: #000000;
+    background: linear-gradient(45deg,orange , orangered );
+    height: 100vh;
+}
+.container_ventana{
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.712);
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    opacity: 0;  
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    padding:2vh;
+    text-align: center;
+    pointer-events: none;
+}
+
+.ventana{
+    background-color: #ff0000;
+    color:white;
+    max-width: 100%;
+    padding: 2vw;
+    border-radius: 20px;
+    box-shadow: 0 1000px 1000px rgba(0, 0, 0, 0.2);
+}
+
+.fondo{
+    padding: 2vh;
+    
+}
+.bloque{
+    background-color: #212529;
+    color: aliceblue;
+    padding:2vw;
+    border-radius: 10px;
+    height: 100%;
+}
+a{
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: none;
+}
+.contenedor{
+    display: flex;
+    margin-bottom: 2vh;
+    border: solid rgb(0, 0, 0);
+    border-width: 2px;
+    border-radius: 20px;
+}
+
+.izquierda{
+    width: 15%;
+}
+.img{
+    width: 100%;
+    height: 4.3rem;
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+}
+.derecha{
+    width:85%;
+    height: 4.3rem;
+    background-color: rgb(255, 255, 255);
+    padding-left: 1rem;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.derecha span{
+    font-size: 3rem;
+    color: #000000;
+    font-weight: bolder;
+}
+
+.collapsible{
+    background-color: #000000;
+    border: solid rgb(255, 255, 255);
+    border-width: 2px;
+    color: white;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+}
+
+.contenido{
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: #ffffff;
+    color: #000000;
+    border: solid rgb(255, 255, 255);
+}
+
+.contenedor_rutina{
+    display: flex;
+}
+
+.izquierda_rutina{
+    width: 35%;
+    border-right: solid rgb(0, 0, 0);
+    margin-right: 2vh;
+}
+
+.derecha_rutina{
+    width:65%;
+    height: 100%;
+    text-align: center;
+}
+.img_rutina{
+    width: 100%;
+    height: 12rem;
+}
+
+.container_ventana_final{
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.3);
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    pointer-events: none;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    transition: opacity 0.3s ease;
+}
+
+.ventana_final{
+    background: #000000;
+    background: linear-gradient(75deg,green , greenyellow );
+    color: #ffffff; 
+    max-width: 100%;
+    padding: 2vh;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin: 1vh;
+}
+
+.columna1{
+    width: 30%;
+}
+.columna2{
+    width: 40%;
+}
+.columna3{
+    width: 100%;
+}
+.botonP{
+    width: 99%;
+}
+.img_est{
+    width: 100%;
+    height: 25rem;
+}
+
+
+.dorado{
+    background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
+                radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    border-radius: 20px;
+    font-weight: 900;
+}
+.dorado_arriba{
+    background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
+                radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
+    font-weight: 900;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    text-align: center;
+    padding: 2vh;
+}
+
+.dorado_abajo{
+    background-color: aliceblue;
+    color: #000000;
+    padding:2vh;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.lista_premiun{
+    list-style: none;
+    margin: 0px;
+    margin-block-start:0px;
+    margin-block-end: 0em;
+    padding-inline-start: 0px;
+}
+  
+.item_premiun{
+    display: inline-block;
+    margin: 5px;
+    background-color: rgb(0, 0, 0);
+    background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
+    radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%);
+    color: aliceblue;
+    width: 48%;
+    padding: 2vh;
+    border-radius: 10px;
+    cursor:default;
+    font-weight: bold;
+}
+
+.item_contacto{
+    display: inline-block;
+    margin: 10px;
+    background-color: rgb(0, 0, 0);
+    background: linear-gradient(50deg,rgb(0, 0, 0) , #212529 );
+    color: aliceblue;
+    width: 48%;
+    padding: 2vh;
+    border-radius: 10px;
+    cursor:default;
+    font-weight: bold;
+}
+/* CODIGO DE Pulse */
+@keyframes pulse {
+25% {
+    transform: scale(0.9);
+}
+75% {
+    transform: scale(0.9);
+}
+}
+.pulse {
+  display: inline-block;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+.pulse:hover {
+  animation-name: pulse;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+#confetti {
+    overflow-y: hidden;
+    overflow-x: hidden;
+    width: 100%;
+    margin: 0;
+    height: 100%;
+    position: absolute;
+    display: none;
+    top: 0;
+}
+
+
+@media screen and (max-width : 900px) {
+    .fondo{
+        padding: 0.5vh;
+    } 
+    .bloque{
+        padding:3vw;
+    }
+    .izquierda{
+        width: 25%;
+    }
+
+    .derecha{
+        width: 75%;
+    }
+    .derecha span{
+        font-size: 2.74rem;
+    }
+    .img_est{
+        width: 100%;
+        height: 12rem;
+    }
+    .item_premiun{
+        width: 95%;
+    }
+    .item_contacto{
+        width: 95%;
+    }
+    .botonP{
+        width: 90%;
+    }
+    .columna1{
+        width: 30%;
+    }
+    .columna2{
+        width: 40%;
+    }
+    .columna3{
+        width: 30%;
+    }
+    .titulo_final{
+        font-size: 1.13rem;
+    }
+}

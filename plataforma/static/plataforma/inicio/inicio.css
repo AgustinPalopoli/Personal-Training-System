@@ -1,0 +1,477 @@
+body{
+    font-family:  "Roboto Condensed";
+}
+.et-hero-tabs,
+.et-slide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
+  position: relative;
+  background: #eee;
+  text-align: center;
+  padding: 0 2em;
+}
+.et-hero-tabs h1,
+.et-slide h1 {
+  font-size: 2rem;
+  margin: 0;
+  letter-spacing: 1rem;
+}
+.et-hero-tabs h3,
+.et-slide h3 {
+  font-size: 1rem;
+  letter-spacing: 0.3rem;
+  opacity: 0.6;
+}
+
+.et-hero-tabs-container {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 70px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  z-index: 10;
+}
+.et-hero-tabs-container--top {
+  position: fixed;
+  top: 0;
+}
+
+.et-hero-tab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  color: #000;
+  letter-spacing: 0.1rem;
+  transition: all 0.5s ease;
+  font-size: 0.8rem;
+}
+.et-hero-tab:hover {
+  color: white;
+  background: rgb(255, 94, 0);
+  transition: all 0.5s ease;
+}
+
+.et-hero-tab-slider {
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 6px;
+  background: #66B1F1;
+  transition: left 0.3s ease;
+}
+
+.parte1{
+    background-color: #000;
+    position: relative;
+    height: 90vh;
+}
+
+.parallax{
+    height: 190vh;
+    background-size:cover;
+    background-attachment: fixed;
+    position: relative;
+    z-index: 2;
+    padding: 2%;
+}
+.parte1 .titulo1,.parte1 .titulo2{
+    font-size: 400%;
+    font-weight: 900;
+    color: #fff;
+}
+.parte1 .titulo2{
+    color: rgb(255, 81, 0);
+}
+.parte1 .titulos{
+    background-color: rgba(0, 255, 255, 0);
+    height: 85vh;
+}
+.parte1 .servicios{
+    background-color: rgba(43, 255, 0, 0);
+    height: 95vh;
+}
+.parte1 .servicios .titulo{
+    font-size: 400%;
+    font-weight: 900;
+    color: #fff;
+    margin-bottom: 5vh;
+}
+
+.parte1 .servicios .tarjetas .card{
+    width: 20vw;
+    height: auto;
+    float: left;
+    margin-right: 2%;
+}
+.parte1 .servicios .tarjetas .card .card-img-top{
+    width: 20vw;
+    height: 25vh;
+}
+.parte1 .servicios .tarjetas .card .card-text{
+    height: auto;
+}
+.botonServicios{
+    background-color: rgb(255, 81, 0);
+    width: 100%;
+    border-color: rgb(255, 81, 0);
+}
+.botonServicios:hover{
+    background-color: rgb(0, 0, 0);
+    border-color: rgb(0, 0, 0);
+}
+
+.parte2{
+    background-color: rgb(255, 0, 0);
+    height: 100vh;
+    z-index: 1;
+    position: relative;
+}
+.parte3{
+    background-color: rgb(255, 255, 255);
+    height: 100vh;
+}
+.parte3 .bloqueIzquierdo .ImgFondo{
+    height: 100vh;
+    width: 58.75vw;
+    filter: grayscale(100%);
+}
+.parte3 .bloqueIzquierdo{
+    position: relative;
+    float: left;
+}
+.parte3 .bloqueIzquierdo .centrado{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 900;
+    color: rgb(255, 81, 0);
+    font-size: 400%;
+}
+.parte3 .bloqueDerecho{
+    background-color: #fff;
+    height: 100vh;
+    width: 40vw;
+    position: relative;
+    float: right;
+    padding: 135px;
+    font-size:larger;
+}
+.parte3 .bloqueDerecho .titulo{
+    font-weight: 900;
+}
+.parte3 .bloqueDerecho .cuerpo{
+    text-align: justify;
+}
+
+.parte4{
+    background-color: rgb(255, 255, 255);
+    height: 100vh;
+}
+.parte4 .titulo{
+    font-size: 400%;
+    font-weight: 900;
+    margin-left: 2%;
+}
+.parte4 .imagenes .ImgClientes{
+    float: left;
+    width: 25%;
+    height: 42.2vh;
+}
+.parte5{
+    background-color: rgb(255, 255, 255);
+    height: 100vh;
+}
+.parte5 .bloqueIzquierdo{
+    height: 100vh;
+    background-color: #fff;
+    width: 58.75vw;
+    float: left;
+    padding: 2%;
+}
+.parte5 .bloqueIzquierdo .titulo{
+    font-size: 400%;
+    font-weight: 900;
+}
+.parte5 .bloqueIzquierdo .cuerpo{
+    background-color: rgba(137, 43, 226, 0);
+    height: 75vh;
+}
+.parte5 .bloqueIzquierdo .cuerpo .icono{
+    vertical-align: middle;
+    margin-top: -3%;
+}
+.parte5 .bloqueIzquierdo .cuerpo .texto{
+    font-size:  250%;
+    margin-left: 2%;
+}
+.parte5 .bloqueIzquierdo .cuerpo .linea{
+    color:rgb(255, 81, 0);
+    opacity: 1;
+    height: 7px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.parte5 .bloqueDerecho .ImgFondo{
+    width: 40vw;
+    float: left;
+    height: 104.5vh;
+}
+.parte6{
+    background-color: rgb(0, 0, 0);
+    height: 90vh;
+}
+.parte6 .titulo{
+    font-size: 400%;
+    font-weight: 900;
+    color: #fff;
+    margin: 2% 2% 0.1% 2%;
+}
+.parte6 .bloqueIzquierdo{
+    float: left;
+    width: 45vw;
+    height: 65vh;
+    margin: 0% 2% 1% 2%;
+    color: #fff;
+    text-align: justify;
+}
+
+.parte6 .lineamedia{
+    color: #fff;
+    opacity: 1;
+    float: left;
+    height:65vh;
+    width:5px;
+    margin:0%;
+    border:none;
+    border-left:1px solid hsla(200, 10%, 50%,100);
+}
+.parte6 .bloqueDerecho{
+    float: left;
+    color: #fff;
+    width: 45vw;
+    height: 65vh;
+    margin: 0% 2% 1% 2%;
+}
+.parte6 .lineaabajo{
+    clear: both;
+    color: #fff;
+    opacity: 1;
+    height: 5px;
+    margin: 0% 2% 0% 2%;
+}
+.parte6 .bloqueAbajo{
+    text-align: center;
+    margin: 0.5% 2% 0% 2%;
+    color: #fff;
+}
+.parte6 .bloqueAbajo .LinkMiPagina{
+    color: rgb(255, 81, 0);
+    cursor: pointer;
+    border-radius: 2px;
+}
+.parte6 .bloqueAbajo .LinkMiPagina:hover{
+    color: rgb(0, 0, 0);
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.parte6 .bloqueDerecho .red, .parte6 .bloqueDerecho .ingresar{
+    border:rgb(255, 81, 0);
+    outline: 0;
+    font-size: 16px;
+    border-radius: 320px;
+    padding: 16px;
+    background-color: #EBECF0;
+    text-shadow: 1px 1px 0 #FFF;
+}
+  
+.parte6 .bloqueDerecho .Lparte1 {
+    display: block;
+    margin-bottom: 24px;
+}
+
+.parte6 .bloqueDerecho .red{
+    color: rgb(255, 94, 0);
+    width: 100%;
+    font-weight: bold;
+    box-shadow: -5px -5px 20px #4d4d4d, 5px 5px 20px #4d4d4d;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    font-weight: 600;
+}
+.parte6 .bloqueDerecho .red:hover {
+    box-shadow: -2px -2px 5px #FFF, 2px 2px 5px #ffffff;
+}
+.parte6 .bloqueDerecho .red:active {
+    box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #FFF;
+}
+.parte6 .bloqueDerecho .red.icon {
+    margin-right: 8px;
+}
+.Link{
+    position:absolute;
+}
+
+@media screen and (max-width : 900px) {
+    .et-hero-tab {
+        font-size: 1.5vh;
+    }
+    .et-hero-tabs-container {
+        width: 100%;
+    }
+    .et-hero-tabs,
+    .et-slide {
+    height: 8vh;
+    width: auto;
+    padding: 0% 0em;
+    }
+
+    .parte1 .titulos{
+        background-color: rgba(0, 255, 255, 0);
+        height: 65vh;
+    }
+    .parte1 .titulo1,.parte1 .titulo2{
+        font-size: 300%;
+    }
+    .parallax{
+        background-size:cover;
+        background-attachment: fixed;
+        background-position: 90%;
+        height: 200vw;
+    }
+
+    .parte2{
+        height: 245vw;
+        background-image:url('/static/diseño/fondomamado.jpg');
+    }
+    .parte1 .servicios .titulo{
+        margin-bottom: 1vh;
+    }
+    .parte1 .servicios .tarjetas .card{
+        float: none;
+        width: 95vw;
+        height: fit-content;
+        margin-bottom: 3.5%;
+    }
+    .parte1 .servicios .tarjetas .card .card-img-top{
+        width: 100%;
+        height: 15vh;
+    }
+    .parte1 .servicios .tarjetas .card .card-text{
+        height: 15vw;
+        margin-bottom: 7.5vw;
+        font-size:3.9vw;
+        text-align: justify;
+    }
+    .parte3 .bloqueIzquierdo .ImgFondo{
+        width: 100%;
+    }
+    .parte3 .bloqueIzquierdo .centrado{
+        opacity: 0;
+        font-size: 0px;
+    }
+    .parte3 .bloqueDerecho{
+        height: 80vh;
+        width: 55vw;
+        position: absolute;
+        opacity: 0.9;
+        padding: 9%;
+        margin: 22%;
+        border-radius: 20px;
+    }
+    .parte3 .bloqueDerecho .cuerpo{
+        font-size:2.1vh;
+    }
+    .parte4 .imagenes{
+        height: fit-content;
+    }
+    .parte4 .imagenes .ImgClientes{
+        width: 45%;
+        height: 25vh;
+        margin: 0% 0% 5% 3%;
+    }
+    .parte4{
+        height: 122vh;
+    }
+    .parte5 .bloqueDerecho .ImgFondo{
+        opacity: 0;
+        position: absolute;
+        width: 0px;
+        height: 0px;
+    }
+    .parte5{
+        height: 120vw;
+    }
+    .parte5 .bloqueIzquierdo{
+        width: 100vw;
+        height: 125vw;
+        padding: 5%;
+        background-color: rgb(218, 217, 217);
+    }
+    .parte5 .bloqueIzquierdo .titulo{
+        margin-bottom: 5%;
+        margin-top: -5%;
+        font-size: 15vw;
+    }
+    .parte5 .bloqueIzquierdo .cuerpo{
+        height: 55vh;
+    }
+    .parte5 .bloqueIzquierdo .cuerpo .texto{
+        font-size:  4.75vw;
+        margin-left: 2%;
+    }
+    .parte5 .bloqueIzquierdo .cuerpo .linea{
+        height: 5px;
+        margin-top: 7.5%;
+        margin-bottom: 7.5%;
+    }
+    .parte6{
+        height: 200vw;
+    }
+
+    .parte6 .titulo{
+        font-size: 6vh;
+        margin: 2% 2% 0.1% 5%;
+    }
+
+    .parte6 .bloqueIzquierdo{
+        float: none;
+        width: 90vw;
+        height: fit-content;
+        margin: 0% 5% 5% 5%;
+        font-size: 4.25vw;
+    }
+    .parte6 .bloqueIzquierdo p{
+        margin-bottom: 0%;
+    }
+    .parte6 .lineamedia{
+        float: none;
+        height:5px;
+        width:90vw;
+        margin-left:5%;
+        margin-right:5%;
+    }
+    .parte6 .bloqueDerecho{
+        float: none;
+        width: 90vw;
+        height: fit-content;
+        margin: 0% 5% 5% 5%;
+    }
+    .parte6 .lineaabajo{
+
+        margin: 0% 5% 0% 5%;
+    }
+    .parte6 .bloqueAbajo{
+        margin: 0.5% 18% 0% 18%;
+    }
+
+}

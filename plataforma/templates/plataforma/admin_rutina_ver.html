@@ -1,0 +1,39 @@
+{% extends "plataforma/base_admin.html" %}
+{% block title %}
+Ejercicios
+{% endblock %}
+
+{% block body %}
+<div id="contenido" class="table-responsive">
+    <h2>Nombre: {{ rutinas.0.rutina.nombre_rutina }}</h2>
+    <h2>Tipo: {{ rutinas.0.rutina.tipo_usuario }}</h2>
+    <h2>Tipo: {{ rutinas.0.rutina.tipo_sexo }}</h2>
+    <table class="table table-dark table-hover table-striped mb-0">
+        <tr>
+            <th>N°</th>
+            <th>Tipo</th>
+            <th>Grupo muscular</th>
+            <th>Nombre</th>
+            <th>Series</th>
+            <th>Repeticiones</th>
+            <th>Descanso</th>
+            <th>Peso</th>
+            <th>Imagen</th>
+        </tr>
+        {% for rutina in rutinas %}
+        <tr>
+            <td>{{ rutina.orden }}</td>
+            <td>{{ rutina.ej.tipo }}</td>
+            <td>{{ rutina.ej.grupo_muscular }}</td>
+            <td>{{ rutina.ej.nombre_ej }}</td>
+            <td>{{ rutina.ej.series }}</td>
+            <td>{{ rutina.ej.repeticiones }}</td>
+            <td>{{ rutina.ej.descanso }}</td>
+            <td>{{ rutina.ej.peso_con_sin }}</td>
+            <td><img src="static/plataforma/imagenes{{ rutina.ej.imagen.url }}" alt="{{ ejercicio.nombre_ej}}"></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a class="botonesA btn btn-secondary" href="{% url 'admin_rutina' %}">Volver</a>
+</div>
+{% endblock %}

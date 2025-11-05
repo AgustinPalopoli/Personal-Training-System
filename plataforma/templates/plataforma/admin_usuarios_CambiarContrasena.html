@@ -1,0 +1,18 @@
+{% extends "plataforma/base_admin.html" %}
+{% block title %}
+Cambiar Contraseña
+{% endblock %}
+
+{% block body %}
+<h1>Cambiar contraseña</h1>
+<form action="{% url 'admin_usuarios_CambiarContrasena' usuario.id %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div>
+        <p>Usuario: {{ usuario.username }}</p>
+        <p>Email: {{ usuario.email }}</p>
+        Contraseña: <input class="btn btn-light" style="width:100%" type="text" name="password" placeholder="Contraseña">
+    </div>
+    <button class="botonesA btn btn-success" type="submit">Guardar</button>
+    <a class="botonesA btn btn-secondary" href="{% url 'admin_usuarios' %}">Volver</a>
+</form>
+{% endblock %}

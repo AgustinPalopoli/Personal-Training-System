@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, width=device-width,shrink-to-fit=no">
+        <link href="" rel="icon">
+    </head>
+    <body>
+        <form action="{% url 'crear_cuentas' %}" method="post">
+            {% csrf_token %}
+            <input autofocus type="text" name="username" placeholder="Nombre de usuario">
+            <input type="email" name="email" placeholder="Email">
+            <select name="rol">
+                <option>admin</option>
+                <option>user</option>
+                <option>premiun</option>
+            </select>
+            <input type="text" name="sexo" placeholder="Sexo">
+            <input type="text" name="contrasena" placeholder="Contraseña">
+            <input type="submit" value="Registrar">
+        </form>
+        <a class="nav-link active" aria-current="page" href="{% url 'salir' %}">Salir</a>
+    </body>
+</html>

@@ -1,0 +1,35 @@
+{% extends "plataforma/base_usuario.html" %}
+{% block title %}
+Inicio
+{% endblock %}
+
+{% load static %}
+{% load random_number %}
+
+{% block body %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bebas Neue">
+{% if messages %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {% for message in messages %}
+    <strong>Charlie Movimiento dice: </strong>{{ message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    {% endfor %}
+ </div>
+{% endif %}
+<h1>Rutinas </h1>
+
+{% for rutina in rutinas %}
+<a href="{% url 'usuario_rutina' rutina.pizarron_rutina.id %}">
+    <div class="contenedor">
+        <div class="izquierda">
+            <img class="img" src="{% random_int 1 18 %}" >
+        </div>
+        <div class="derecha">
+            <span class="texto" style="font-family:Bebas Neue">Rutina {{ forloop.counter }}</span>
+        </div>
+    </div>
+</a>
+{% endfor %}
+{% endblock %}

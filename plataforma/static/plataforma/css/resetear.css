@@ -1,0 +1,25 @@
+body{
+    background: #ffffff;
+    background: linear-gradient(45deg,orange , orangered );
+    height: 100vh;
+}
+.fondo{
+    position: relative;
+    height: 100vh;
+}
+.contenido{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding:2%;
+}
+
+.bloque{
+    background-color: #212529;
+    color: aliceblue;
+    border-radius: 20px;
+    padding:2%;
+    width:95vw;
+    text-align: center;
+}

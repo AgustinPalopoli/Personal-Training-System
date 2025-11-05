@@ -1,0 +1,35 @@
+{% extends "plataforma/base_admin.html" %}
+{% block title %}
+Ej. Agregar
+{% endblock %}
+
+{% block body %}
+<form action="{% url 'admin_ejercicio_modificar' ejercicio.id %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div>
+        <h1>Modificar ejercicio</h1>
+        <p>Tipo:<input required style="width:100%" class="btn btn-light" autocomplete="off" autofocus name="tipo" value={{ ejercicio.tipo }} placeholder="Tipo" type="text"></p>
+        <p>Musculo:<input required style="width:100%" class="btn btn-light" autocomplete="off" autofocus name="grupo_muscular" value={{ ejercicio.grupo_muscular }} placeholder="Grupo muscular" type="text"></p>
+        <p>Nombre:<input required style="width:100%" class="btn btn-light" autocomplete="off" autofocus name="nombre_ej" value={{ ejercicio.nombre_ej }} placeholder="Nombre" type="text"></p>
+        <p>Series:<input required style="width:100%" class="btn btn-light" autocomplete="off" autofocus name="series" value={{ ejercicio.series}} placeholder="Series" type="text"></p>
+        <p>Repeticiones:<input required style="width:100%" class="btn btn-light" autocomplete="off" autofocus name="repeticiones" value={{ ejercicio.repeticiones }} placeholder="Repeticiones" type="text"></p>
+        <p>Descanso (Anterior = {{ ejercicio.descanso }}):
+        <input required class="botonAEx btn btn-light" type="number" name="minutos" min="0" max="5" />:
+        <input required class="botonAEx btn btn-light" type="number" name="segundos" min="0" max="60" /></p>
+        <p>Peso: <select name="peso_con_sin" class="btn btn-light">
+            {% if ejercicio.peso_con_sin == "Con" %}
+                <option selected>Con</option>
+                <option>Sin</option>
+            {% else %}
+                <option>Con</option>
+                <option selected>Sin</option>
+            {% endif %}
+        </select>
+        <p>Imagen
+        <p>Actual: <img src="static/plataforma/imagenes{{ ejercicio.imagen.url }}" alt="{{ ejercicio.nombre_ej}}"></p>
+        <p>Nueva: <input class="form-control" type="file" autofocus name="imagen" placeholder="Imagen"></p>
+    </div>
+    <button class="botonesA btn btn-success" type="submit">Guardar</button>
+    <a class="botonesA btn btn-secondary" href="{% url 'admin_ejercicio' %}">Volver</a>
+</form>
+{% endblock %}

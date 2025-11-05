@@ -1,0 +1,44 @@
+{% extends "plataforma/base_admin.html" %}
+{% block title %}
+Pizarron Agregar
+{% endblock %}
+
+{% block body %}
+<form action="{% url 'admin_pizarron_agregar' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div>
+        <h1>Asignar rutinas a usuarios</h1>
+        <p>Usuarios: <select class="botonAEx btn btn-light" name="usuario">
+        {% for usuario in usuarios %}
+            <option value={{ usuario.id }}>{{ usuario.username }}</option>
+        {% endfor %}
+        </select></p>
+        <p>Mensaje: <input id="input_frase" class="btn btn-light" autocomplete="off" autofocus name="mensaje" placeholder="Mensaje" type="text"><a onclick="PonerFrase()" style="margin-left:2vh" class="btn btn-info"><b>Poner frase</b></a><p>
+        {% for i in '01234'|make_list %}
+        <p>
+        Rutinas {{ forloop.counter }}: <select style="width:100%" class="form-select" multiple aria-label="multiple select example" onchange="ocultar(id)" name="rutinas_semana" id="{{ forloop.counter }}">
+            {% for rutina in rutinas|dictsortreversed:"tipo_sexo"  %}
+                {% if rutina.tipo_sexo == "Hombre" %}
+                <option style="background-color:#b2dafa;color:black" value={{ rutina.id }}>{{ rutina.nombre_rutina }}</option>
+                {% else %}
+                <option style="background-color:pink;color:black" value={{ rutina.id }}>{{ rutina.nombre_rutina }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        </p>
+        {% endfor %}
+    </div>
+    <button class="botonesA btn btn-success" type="submit">Guardar</button>
+    <a class="botonesA btn btn-secondary" href="{% url 'admin_inicio' %}">Volver</a>
+</form>
+<script type="text/javascript">
+    function PonerFrase() {
+        fetch(`/admin_frases`)
+        .then(response => response.json())
+        .then(frase => {
+            document.getElementById('input_frase').value = frase.frase;
+        })
+    };
+
+</script>
+{% endblock %}

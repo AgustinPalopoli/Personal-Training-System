@@ -1,0 +1,157 @@
+{% extends "plataforma/base_inicio.html" %}
+{% block title %}
+Iniciar Sesion
+{% endblock %}
+
+{% load static %}
+
+{% block body %}
+<section class="fondo">
+    {% if messages %}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert" style="margin:2vh">
+        {% for message in messages %}
+        <strong>{{ message }}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <div class="contenido">
+        <div class="linea_izquierda"> </div>
+        <div class="bloque">
+            <form id="formulario" action="{% url 'iniciar_sesion' %}" method="post" onsubmit="">
+                {% csrf_token %}
+                <div id="contenido_formulario">
+                    <div class="arriba">     
+                        <img src="{% static 'plataforma/inicio/imag/clientes5.png' %}" class="imagen">
+                    </div>
+                    <div class="abajo">
+                        <h2><b>Charlie Movimiento</b></h2>
+                        <p><input style="width:100%;margin-bottom:1vh" class="form-control"  autofocus type="text" name="usuario" placeholder="Usuario"></p>
+                        <p><div class="input-group">
+                            <span onclick="mostrar_contrasena('contrasena')" class="input-group-text" id="basic-addon1" style="cursor: pointer;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16"><path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"></path><path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"></path></svg>
+                            </span>
+                            <input id="contrasena" class="form-control" type="password" name="contrasena" placeholder="Contraseña">
+                        </div>
+                        </p>
+                        <div class="w-full h-16 flex items-center justify-center">
+                            <button type="submit" class="rounded-md px-3.5 py-2 m-1 overflow-hidden relative group cursor-pointer border-2 font-medium border-white text-black ">
+                              <span style="background:rgb(209, 84, 0)" class="absolute w-64 h-0 transition-all duration-300 origin-center rotate-45 -translate-x-20 top-1/2 group-hover:h-64 group-hover:-translate-y-32 ease"></span>
+                              <span class="relative text-white transition duration-300 group-hover:text-white ease">Iniciar Sesion</span>
+                            </button>
+                        </div>
+                        No eres miembro todavía? <a id="boton_r" style="color:orange" onmouseover="this.style.textDecoration='underline';this.style.cursor = 'pointer';"  onmouseout="this.style.textDecoration='none';" onclick="cambio_for()">Registrate ya</a>
+                        <a href="{% url 'reset_password' %}"style="color:orange" onmouseover="this.style.textDecoration='underline';this.style.cursor = 'pointer';"  onmouseout="this.style.textDecoration='none';">Olvide mi contraseña</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="linea_derecha"></div>
+        <div id="ventana_modal" class="ventana">
+            <svg id="close" style="float:right;cursor:pointer" xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+            </svg>
+            <br>
+            <br>
+            <br>
+            <h1><b>Contraseña incorrecta</b></h1>
+            <p style="text-align: left;margin-top:40%">La contraseña debe cumplir lo siguiente:</p>
+            <ul style="text-align: left;margin-left:2vh" id="lista">
+            </ul>
+        </div>
+    </div>
+</section>
+<script>
+
+function ventanamodal(texto) {
+    const modal_container = document.getElementById('ventana_modal');
+    const close = document.getElementById('close');
+    const lista = document.getElementById('lista');
+    lista.innerHTML = texto;
+    modal_container.style.opacity = "1";
+    modal_container.style.pointerEvents = "auto";
+    close.addEventListener('click', () => {
+      modal_container.style.opacity = "0";
+      modal_container.style.pointerEvents = "none";
+    });
+}
+
+function validarContrasena(){
+    var newPassword = document.getElementById('contrasena_r').value;
+    var newPasswordConfirmation = document.getElementById('contrasena_rc').value;
+    var minNumberofChars = 8;
+    var maxNumberofChars = 16;
+    var regularExpression = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+    var error  = "";
+    if(newPassword.length < minNumberofChars || newPassword.length > maxNumberofChars){
+        error = error + "<li type='disc'>La contraseña debe tener entre 8 y 16 caracteres</li>";
+    }
+    if(!regularExpression.test(newPassword)) {
+        error = error + "<li type='disc'>La contraseña debe tener por lo menos un número y un caracter especial</li>"
+    }
+    if(newPasswordConfirmation != newPassword) {
+        error = error + "<li type='disc'>Las contraseñas no coinciden</li>"
+    }
+    if(error != ""){
+        ventanamodal(error);
+        return false;
+    }
+    else{
+        console.log("a")
+        document.getElementById("formulario").submit();
+        return true;
+    }
+    
+}
+
+function cambio_for() {
+    document.getElementById("formulario").action = "{% url 'registrarse' %}";
+    document.getElementById("formulario").setAttribute("onsubmit", "event.preventDefault(); validarContrasena();");
+    var cont = document.getElementById("contenido_formulario");
+    cont.innerHTML = `
+    <div class="registrar">
+        <h2><b>Registrarse</b></h2>
+        <p><h5>Usuario:</h5></p>
+        <p><input style="width:100%" class="form-control"  autofocus type="text" name="usuario"></p>
+        <p><h5>Email:</h5></p>
+        <p><input style="width:100%" class="form-control"  autofocus type="text" name="email"></p>
+        <p><h5>Género:</h5></p>
+        <p style="width:100%" >
+            <select name="sexo" class="btn btn-light" style="width:100%">
+                <option>Mujer</option>
+                <option>Hombre</option>
+            </select>
+        </p>
+        <p><h5>Contraseña:</h5></p>
+        <p><div class="input-group" style="width:100%" >
+            <span onclick="mostrar_contrasena('contrasena_r')" class="input-group-text" id="basic-addon1" style="cursor: pointer;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16"><path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"></path><path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"></path></svg>
+            </span>
+            <input id="contrasena_r" class="form-control" type="password" name="contrasena">
+        </div>
+        </p>
+        <p><h5>Confirmar contraseña:</h5></p>
+        <p><div class="input-group" style="width:100%;margin-bottom:5%" >
+            <span onclick="mostrar_contrasena('contrasena_rc')" class="input-group-text" id="basic-addon1" style="cursor: pointer;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16"><path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"></path><path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"></path></svg>
+            </span>
+            <input id="contrasena_rc" class="form-control" type="password" name="contrasena_c">
+        </div>
+        </p>
+        <button style="color:white;margin-right:2vh" onmouseover="this.style.color = 'black'" onmouseout="this.style.color = 'white'" class="btn btn-warning" type="submit"><b>Guardar</b></button>
+        <a style="color:orange" onmouseover="this.style.textDecoration='underline';this.style.cursor = 'pointer';"  onmouseout="this.style.textDecoration='none';" aria-current="page" href="{% url 'redireccion' %}">Volver</a>
+    </div>`
+    
+}
+function mostrar_contrasena(campo) {
+    const input = document.getElementById(campo);
+    if (input.getAttribute("type") === "password") {
+        input.setAttribute("type", "text");
+    } else {
+        input.setAttribute("type", "password");
+    }
+}
+</script>
+{% endblock %}

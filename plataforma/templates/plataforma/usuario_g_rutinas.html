@@ -1,0 +1,129 @@
+{% extends "plataforma/base_usuario_g.html" %}
+{% block title %}
+Rutina
+{% endblock %}
+
+{% load static %}
+{% load random_number %}
+
+{% block body %}
+<div id="modal_container_final" class="container_ventana_final">
+    <div class="ventana_final">
+        <p><span id="close" style="float:right;cursor:pointer"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16"> <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/></svg></span></p>
+        <br>
+        <img style="margin-left:30%;width:35%;height:45%" src="{% static "plataforma/imageDesign/mamadisimo.png" %}" >
+        <h2 style="text-align:center" class="titulo_final">&#127881 ¡Felicidades por completar la rutina! &#127881</h2>
+        <h6 style="text-align:center">&#128170 Ahora estas mamadisim@ un dia más &#128170</h6>
+    </div>
+</div>
+<h1>{{ rutina.0.rutina.nombre_rutina }}</h1>
+{% for item in rutina  %}
+    <div id="contenido">
+        <div>
+            <button class="collapsible" type="button" id="collap{{ item.orden }}"><b>Ejercicio {{ item.orden }}</b></button>
+            <div class="contenido">
+                <h2>{{ item.ej.nombre_ej }}</h2>
+                <hr style="height:3px;opacity:1">
+                <div class="contenedor_rutina">
+                    <div class="izquierda_rutina">
+                        {% if item.0.ej.descanso|tiempo_str %}
+                            <p><b>Series: </b><span id="seriesA{{ item.orden }}">0</span>/<span id="seriesT{{ item.orden }}">{{ item.ej.series }}</span></p>
+                        {% else %}
+                            {% if item.0.ej.series != "1" %}
+                                <p><b>Series: </b><span style="display:none" id="seriesA{{ item.orden }}">0</span><span id="seriesT{{ item.orden }}">{{ item.ej.series }}</span></p>
+                            {% else %}
+                                <p><b>Series: </b><span id="seriesA{{ item.orden }}">0</span>/<span id="seriesT{{ item.orden }}">{{ item.ej.series }}</span></p>
+                            {% endif %}
+                        {% endif %}
+                        <p><b class="reps" style="margin-right:1vh">Repeticiones: </b><span class="reps_cant">{{ item.ej.repeticiones }}</span></p>
+                        {% if item.ej.peso_con_sin == "Con" %}
+                        <p><b>Peso:</b> Con</p>
+                        {% else %}
+                        <p><b>Peso:</b> Sin</p>
+                        {% endif %}
+                    </div>
+                    <div class="derecha_rutina" id="derecha_rutina{{ item.orden }}">
+                        <button onclick="mostrar_imagen('{{ item.orden }}','{{ item.ej.imagen }}')" style="margin-top: 5vh;" type="button" class="btn btn-dark">Ver imagen</button>
+                    </div>
+                </div>
+                <hr style="height:3px;opacity:1">
+                <div id="{{ item.orden }}" style="text-align: center;">
+                {% if item.ej.descanso|tiempo_str %}
+                    {% if item.ej.series != "1" %}
+                        <button class="btn btn-warning" type="button" id="descanso" onclick="descansaa('{{ item.orden }} ','{{ item.ej.descanso }}' )" ><b>Descanso</b><svg style="margin-left:1vh" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-play-fill" viewBox="0 0 16 16"><path d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"/></svg></button>
+                    {% else %}
+                        <button class="btn btn-success" type="button" id="descanso" onclick="listo('{{ item.orden }} ')" ><b>Listo</b><svg style="margin-left:1vh" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16"><path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/></svg></button>
+                    {% endif %}
+                {% else %}
+                    {% if item.ej.series != "1" %}
+                        <span style="color:red;font-size:1.5rem;margin-right:1vh">¡Sin descanso!</span>
+                    {% endif %}
+                    <button class="btn btn-success" type="button" id="descanso" onclick="listo('{{ item.orden }} ')" ><b>Listo</b><svg style="margin-left:1vh" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16"><path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/></svg></button>
+                {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+<audio id="audio_final" src="{% static 'plataforma/sonidos/final.mp3' %}"></audio>
+<audio id="audio" src="{% static 'plataforma/sonidos/descanso_sonido.mp3' %}"></audio>
+<script type="text/javascript">
+var coll = document.getElementsByClassName("collapsible");
+coll[0].style.borderTopLeftRadius = "20px";
+coll[0].style.borderTopRightRadius = "20px";
+coll[coll.length - 1].style.borderBottomRightRadius = "20px";
+coll[coll.length - 1].style.borderBottomLeftRadius = "20px";
+var i;
+for (i = 0; i < coll.length; i++) {
+    if(coll[i]==coll[coll.length - 1]){
+        coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+            content.style.display = "none";
+            this.style.borderBottomRightRadius = "20px"
+            this.style.borderBottomLeftRadius = "20px";
+            } else {
+            content.style.display = "block";
+            content.style.borderBottomRightRadius = "20px";
+            content.style.borderBottomLeftRadius = "20px";
+            this.style.borderBottomRightRadius = "0px"
+            this.style.borderBottomLeftRadius = "0px";
+            }
+        });
+    }
+    else{
+        coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+            content.style.display = "none";
+            } else {
+            content.style.display = "block";
+            if (coll[i] == coll[coll.length - 1]){
+                content.style.borderBottomRightRadius = "0px";
+                content.style.borderBottomLeftRadius = "0px";
+            }
+            }
+        });
+    }
+
+}
+</script>
+<script type="text/javascript">
+    $(window).resize(function() {
+        var reps = document.getElementsByClassName("reps");
+        if ($(window).width() < 768) {
+            for (i = 0; i < reps.length; i++) {
+                reps[i].innerHTML = "Reps:"
+            }
+        }else{
+            for (i = 0; i < reps.length; i++) {
+                reps[i].innerHTML = "Repeticiones:"
+            }
+        }
+    })
+</script>
+<script src="{% static 'plataforma/js/rutina_usuario.js' %}"></script>
+
+{% endblock %}

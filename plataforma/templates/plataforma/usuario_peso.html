@@ -1,0 +1,44 @@
+{% extends "plataforma/base_usuario.html" %}
+{% block title %}
+Pesos
+{% endblock %}
+
+{% block body %}
+{% if messages %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {% for message in messages %}
+    <strong>{{ message }}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    {% endfor %}
+ </div>
+{% endif %}
+<h1>Pesos</h1>
+<form action="{% url 'usuario_peso' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table style="width:100%">
+        <colgroup>
+            <col class="columna1" span="1">
+            <col class="columna2" span="1">
+            <col class="columna3" span="1">
+          </colgroup>
+        <tbody>
+          {% regroup datos|dictsort:"ejercicio.grupo_muscular" by ejercicio.grupo_muscular  as datos_og %}
+          {% for item in datos_og %}
+            <tr class="table-light">
+              <td colspan="3"><h1 style="margin-top:8px;padding-left:5px">{{ item.grouper }}</h1></td>
+            </tr>
+            {% for ex in item.list %}
+            <tr>
+                <td style="border-color: #32383e;border-width:2px;padding-left:5px">{{ ex.ejercicio.tipo }}</td>
+                <td style="border-color: #32383e;border-width:2px;padding-left:5px">{{ ex.ejercicio.nombre_ej }}</td>
+                <td style="border-color: #32383e;border-width:2px;padding-left:5px"><input style="width:100%;margin-top:2vh" class="btn btn-light" autocomplete="off" autofocus name="cantidad_peso" value="{{ ex.cantidad_peso }}" type="text"></p></td>
+            </tr>
+            {% endfor %}
+          {% endfor %}
+        </tbody>
+      </table>
+    <input style="margin-top:2vh"class="btn btn-primary"  type="submit" value="Guardar">
+</form>
+{% endblock %}

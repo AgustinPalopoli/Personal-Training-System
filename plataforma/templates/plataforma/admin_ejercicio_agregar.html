@@ -1,0 +1,26 @@
+{% extends "plataforma/base_admin.html" %}
+{% block title %}
+Ej. Agregar
+{% endblock %}
+
+{% block body %}
+<form action="{% url 'admin_ejercicio_agregar' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div>
+        <h1>Agregar ejercicio</h1>
+        <p>Tipo: <input required style="width:100%" class="btn btn-light" autocomplete="off" autofocus name="tipo" placeholder="Tipo" type="text"><p>
+        <p>Musculo: <input required style="width:100%" class="btn btn-light" autocomplete="off" autofocus name="grupo_muscular" placeholder="Grupo muscular" type="text"><p>
+        <p>Nombre: <input required style="width:100%" class="btn btn-light" autocomplete="off" autofocus name="nombre_ej" placeholder="Nombre" type="text"><p>
+        <p>Series: <input required style="width:100%" class="btn btn-light" autocomplete="off" autofocus name="series" placeholder="Series" type="text"><p>
+        <p>Repeticiones: <input required style="width:100%" class="btn btn-light" autocomplete="off" autofocus name="repeticiones" placeholder="Repeticiones" type="text"><p>
+        <p>Descanso (Si el descanso es igual a nada poner 0 y 0): <input  required class="btn btn-light" type="number" name="minutos" min="0" max="5" /> : <input required class="btn btn-light" type="number" name="segundos" min="0" max="60" /></p>
+        <p>Peso: <select class="btn btn-light" name="peso_con_sin">
+            <option>Con</option>
+            <option>Sin</option>
+        </select></p>
+        <p>Imagen: <input required class="form-control" type="file" autofocus name="imagen" placeholder="Imagen"></p>
+    </div>
+    <button class="botonesA btn btn-success" type="submit">Guardar</button>
+    <a class="botonesA btn btn-secondary" href="{% url 'admin_ejercicio' %}">Volver</a>
+</form>
+{% endblock %}

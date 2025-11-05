@@ -1,0 +1,26 @@
+{% extends "plataforma/base_usuario_g.html" %}
+{% block title %}
+Inicio
+{% endblock %}
+
+{% load static %}
+{% load random_number %}
+
+{% block body %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bebas Neue">
+<h1>Rutinas </h1>
+
+{% for rutina in rutinas %}
+<a href="{% url 'usuario_g_rutinas' rutina.id %}">
+    <div class="contenedor">
+        <div class="izquierda">
+            <img class="img" src="{% random_int 1 18 %}" >
+        </div>
+        <div class="derecha">
+            <span class="texto" style="font-family:Bebas Neue">Rutina {{ rutina.nombre_rutina }}</span>
+        </div>
+    </div>
+</a>
+{% endfor %}
+
+{% endblock %}

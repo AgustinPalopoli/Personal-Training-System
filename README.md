@@ -60,5 +60,3 @@ In summary, the webpage's unique design, coupled with its comprehensive content 
 # Additional information
 
 This webpage was develop for a personal trainer and he is going to use it for work.
-
-Sorry for my poor english. I learned how to have a conversation about the weather but they didnt teach me how to explain code in english. Also sorry about the video I couldnt show all the functions of the webpage in it.

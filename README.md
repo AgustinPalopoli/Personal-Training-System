@@ -1,62 +1,99 @@
-# Distinctiveness and Complexity
-I think the webpage is considered to satisfy the distinctiveness and complexity requirements for several reasons. Firstly, its design incorporates a unique and visually appealing layout using a minimalist approach. In every css file there is a code that assures mobile-responsive style.
+# Trainer Routine Management Website
 
-Additionally, the webpage demonstrates the use of a variety of models and many functions in the back-end that allow the differents types of users to make many things. Admins are able to assign routines to user and they are able to see them and save information about the weights quantity.In the other hand JavaScript its used in the frond-end side of the users so they have a dinamic experience.
+## Overview
+This website is designed for trainers to manage workout routines efficiently. It provides two types of user accounts: **Admin** and **Client**. The platform features a minimalist design for easy navigation and functionality.
 
-In summary, the webpage's unique design, coupled with its comprehensive content and advanced functionality, fulfills the distinctiveness and complexity requirements. It aims to leave a lasting and fun impression on users while offering a user-friendly gym experience.
+## Admin Features
+Admins have full control over the platform, allowing them to manage clients, exercises, and routines effectively. Below are the key functionalities available to an admin:
 
-# Content
+### Routine Management
+- Assign or remove a weekly workout routine for a client.
+- Send messages to clients regarding their assigned routines.
+- Ensure that clients follow their scheduled routines.
+- Monitor client adherence and make necessary adjustments to their programs.
+- Set reminders or notifications for clients regarding their workouts.
 
-**Functions**
-- Create accounts with permissions
-- Register, login and logout
-- In case of forgoting the password the user can change it with a mail that will be sent to their email
-- Permission decorator in views to avoid cross url access
-- Admin accounts can do the following:
-  - List, add, modify and delete a exercise (it conisist in a type, muscle, name, set, repetitions, rest, weight, image)
-  - List, add, modify and delete a routine (it conisist in a name, type of the user who will see it, which biological sex is it directed to)
-  - List, add, delete, modify the password, change from a free account to a preimun and the saved weight of a user
-  - Upload a txt file fill with phrase
-  - List, add, delete and modify a "chalkboard" (in the chalkboard the admin assigns a user 5 routines and a message with a personal sentence or a random phrase)
-- Premiun user accounts can do the following:
-  - In the index they can see they personal 5 routines (next to random images generated with ia) and the message
-  - See all the exercises of a routine and do progressively the exercise (you can make a set, click the rest button and a countdown appears when it finishes its add 1 to the counter of set. When you finish all the exercises a message appears). See the weight the user lift (blank if its equal to none) and if you click a input field with a save button will apear so you can change the ammount of weight. Click a button to load the image of the exercise.
-  - See all the exercises that use weights and a input field with the ammount the user lift (blank if its equal to none)
-  - See stretching exercises
-- Free user accounts can do the following:
-  - In the index they can see pre-load routines (next to random images generated with ia)
-  - See all the exercises of a routine and do progressively the exercise (you can make a set, click the rest button and a countdown appears when it finishes its add 1 to the counter of set. When you finish all the exercises a message appears). Click a button to load the image of the exercise.
-  - See the benefits of becoming Premiun and how to contact the staff
-  
-**Style**
-- Inicio contains all the static files for the index page
-- css contains all the css files
-- imagenes contains all the images of the exercises
-- imageDesign contains all the images for the design
-- js contains the js needed in the user side
-- sonido contains the sound that plays when a rest end or the last exercise its finished
-  
-**Templatetags**
-- Contains a python file that have two filter for the templates. One give a random int to select a random image of desing. The other retunr a bool value if a time is equal to 0:00:00
-  
-**Template**
-- base_ templates contains the base that will be extended in the rest of the templates
-- admin_  templates contains all the templates used in the admin side
-- inicio is the index template
-- iniciar_sesion is the log in template
-- redireccion is a template that redirect the user depending on the rol
-- resetear_ templates contains all the templates used when you are changing your password
-- usuario_ templates contains all the templates used in the premiun user side
-- usuario_g_ templates contains all the templates used in the free user side
+### Exercise Management
+- Add, modify, and delete exercises.
+- Upload and manage images for each exercise.
+- View the assigned image for each exercise.
+- Categorize exercises based on difficulty level, targeted muscles, or workout types.
+- Include video demonstrations for better client understanding.
+- Provide detailed descriptions and tips for each exercise.
 
-# How to run the application
+### User Management
+- Create, delete, and reset passwords for users.
+- Modify weight records for clients in exercises involving weights.
+- Download all clients' weight records to track progress.
+- View client history and past performance.
+- Assign different training levels based on a client’s progress.
+- Send personalized feedback to clients based on their performance.
 
-1. This aplication use postgre so it need the appropriate connection
-2. Put a email in settings.py in the variable EMAIL_HOST_USER
-3. In that email get a password for an app and paste it in EMAIL_HOST_PASSWORD
-4. Create a super user
-5. Log in as normal and create an admin account
+### Routine Creation & Modification
+- Create, modify, view, and delete workout routines.
+- Assign existing exercises to routines.
+- Develop specialized routines for various fitness goals such as muscle gain, fat loss, or endurance improvement.
+- Adjust routines dynamically based on client progress and feedback.
+- Allow for seasonal or event-based training plans.
 
-# Additional information
+## Client Features
+Clients have access to their assigned workout routines and personal progress tracking. Below are their available functionalities:
 
-This webpage was develop for a personal trainer and he is going to use it for work.
+### Routine Access
+- View assigned weekly routines.
+- Open routines to see details, including:
+  - Exercise name
+  - Exercise mode
+  - Number of sets
+  - Number of repetitions
+  - Rest period
+  - Weight used (if applicable)
+  - Image of the trainer demonstrating the exercise
+  - Video demonstration if available
+  - Notes from the trainer about specific workouts
+
+### Progress Tracking
+- View and modify their weight records for exercises that involve weights.
+- Track personal performance and improvements over time.
+- Receive automated suggestions on progression based on recorded weights.
+- Compare current performance with past data to measure improvement.
+- Set personal fitness goals and milestones.
+- Receive motivational messages from the trainer.
+
+### Stretching Exercises
+- Access a section dedicated to stretching exercises.
+- Learn proper stretching techniques for injury prevention.
+- Follow guided stretching routines for better flexibility and mobility.
+- Categorized stretching routines based on workout types.
+- Receive recommendations on which stretches to perform before and after workouts.
+
+## Welcome Page
+The website includes a **Welcome Page** that introduces the trainer and their philosophy, helping users understand the approach and benefits of the training program.
+- Overview of the trainer's background, certifications, and experience.
+- Explanation of training methodology and philosophy.
+- Testimonials from previous clients to build credibility.
+- Information on how the platform works and how clients can make the most out of it.
+- Contact details for inquiries and support.
+
+## Design Philosophy
+Both the admin and client dashboards feature a minimalist design, ensuring a smooth and user-friendly experience. The interface prioritizes simplicity and clarity to enhance usability and accessibility.
+
+### Key Design Principles:
+- **Ease of Navigation**: Simple menus and clear labels for an intuitive user experience.
+- **Responsiveness**: Works seamlessly across different devices including mobile phones, tablets, and desktops.
+- **Aesthetic Simplicity**: Clean, modern design with minimal distractions.
+- **Performance Optimization**: Fast loading times for better efficiency.
+- **Customization Options**: Allow clients to personalize their dashboard appearance.
+- **Dark Mode Option**: Enables a comfortable experience for users who prefer darker themes.
+- **Interactive Charts**: Display client progress in visual graphs for better tracking.
+
+## Additional Features
+- Secure login and authentication to protect user data.
+- Cloud storage for exercise images and videos.
+- Automated backups to prevent data loss.
+- Multi-language support for a wider user base.
+- Email and push notifications for reminders and updates.
+- Community forum where clients can share progress and tips.
+- Integration with wearable fitness devices for real-time data tracking.
+
+This platform serves as an essential tool for trainers to efficiently manage and monitor their clients' progress while providing clients with an organized and structured workout plan. By incorporating these features, the website ensures both trainers and clients have an engaging, effective, and user-friendly experience tailored to their fitness goals.
